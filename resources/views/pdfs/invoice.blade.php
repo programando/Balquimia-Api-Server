@@ -61,7 +61,7 @@
                     <div class="t24">PBX: (+57-2) 488 1616</div>
                     <div class="t24 mb15">Calle 35 # 4-31 - Cali - Colombia</div>
                     <div >Visita nuestro sitio web:</div>
-                    <div class="tB"> <a href="http://www.balquimia.com"> www.balquimia.com</a></div>
+                    <div class="tB"> www.balquimia.com</div>
                 </td>
                 <td width="30%" class="taR">
                     <div class="t24">NIT: 900.755.214-4</div>
@@ -159,7 +159,7 @@
                 <tr>
                     <td width="15%" class="p105 tB bAzul colorfff bRS1">N° Orden de compra:</td>
                     <td width="35%" class="p105 bRS1">{{ $Factura['order_reference'] }}</td>
-                    <td width="15%" class="p105 tB bAzul colorfff  bRS1">Vendedor:</td>
+                    <td width="15%" class="p105 tB bAzul colorfff bRS1">Vendedor:</td>
                     <td width="35%" class="p105">{{ $Additionals['nom_vnddor'] }}</td>
                 </tr>
             </table>
