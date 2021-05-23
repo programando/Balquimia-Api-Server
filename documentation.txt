@@ -1,0 +1,29 @@
+php artisan serve --host=localhost --port=8000
+
+php artisan queue:work
+
+
+ Crear Modelos
+ --------------
+    php artisan code:models --table=terceros
+
+Consultas mas eficientes
+   https://programacionymas.com/blog/consultas-laravel-eficientes-usando-eloquent
+
+
+https://www.google.com/drive/download/
+
+
+composer dump-autoload -o
+php artisan config:clear
+php artisan cache:clear
+php artisan config:cache
+
+
+Funcionó Abril 13 2021
+---------------------------
+composer dump-autoload
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+php artisan config:cache
