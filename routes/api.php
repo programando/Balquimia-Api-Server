@@ -56,7 +56,8 @@ Route::group(['prefix'=>'ventas', 'namespace'=>'Api'], function(){
 
 Route::group(['prefix'=>'terceros', 'namespace'=>'Api'], function(){
     $localController = 'TercerosController@';
-    Route::get('/clientes/busqueda'                 , $localController.'clientesBuscarNomSucNitNomCcial');
+    Route::get('/clientes/busqueda'                             , $localController.'clientesBuscarNomSucNitNomCcial');
+    Route::get('/clientes/productos/comprados'                  , $localController.'clientesProductosComprados');
  });
 
 

@@ -57,7 +57,9 @@ class Tercero extends Model
 		'vend_listados',
 		'vend_nom_fact',
 		'usuario',
-		'inactivo'
+		'inactivo',
+		'cod_vendedor',
+		'nom_vendedor'
 	];
 
 	public function terceros_notas()

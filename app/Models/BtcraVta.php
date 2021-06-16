@@ -161,4 +161,12 @@ class BtcraVta extends Model
         });
         return $VtasUltimosDosAnios ;
 			}
+
+			public static function clientesProductosComprados ( $IdCliente ) {
+				$nomCahe = 'ProductosCompradosCliente'.$IdCliente;
+				$ProductosComprados  = Cache::tags( $nomCahe )->remember( $nomCahe ,60,   function(  )  use ($IdCliente )  {   
+								return     DB::select(' call api_terceros_clientes_productos_comprados ( ?)', array($IdCliente ));
+					});
+					return $ProductosComprados ;				
+			}
 	}
