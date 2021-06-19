@@ -6,7 +6,5 @@
       'EMAIL_SISTEMAS'          => env('EMAIL_SISTEMAS'),
       'APP_URL_CLIENT'          => env('APP_URL_CLIENT'),
       'URL_USER_PASSWORD_RESET' => env('URL_USER_PASSWORD_RESET'),
-      'DB_HOST'                 => env('DB_HOST'),
-      'DB_DATABASE'             => env('DB_DATABASE'),
     ];
 ?>

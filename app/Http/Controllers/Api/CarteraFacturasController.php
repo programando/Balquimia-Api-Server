@@ -21,9 +21,5 @@ class CarteraFacturasController extends Controller
         return Cartera::TotalPorVendedor (  $formData->idTercVendedor );
     }
 
-    public function cartera() {
-        echo ( config('balquimia.DB_HOST') );
-        echo ( config('balquimia.DB_DATABASE') );
  
-    }
 }

@@ -43,7 +43,7 @@ Route::group(['prefix'=>'cartera', 'namespace'=>'Api'], function(){
     Route::get('/clientes'                 , $localController.'clientesCxcPorVendedor');
     Route::get('/cliente/facturas'         , $localController.'facturasPorNit');
     Route::get('/vendedor/total'           , $localController.'totalPorVendedor');
-    Route::get('/'           , $localController.'cartera');
+ 
  });
 
 
