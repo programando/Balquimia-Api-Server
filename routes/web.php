@@ -1,10 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-  DB::listen(function($query) {
+/*   DB::listen(function($query) {
 echo "<pre>{$query->sql} - {$query->time}</pre>";
 });
- 
+  */
 Route::get('/', function (Request $request) {
   
     return view('welcome');
