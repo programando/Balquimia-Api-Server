@@ -1,10 +1,10 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-   DB::listen(function($query) {
+/*    DB::listen(function($query) {
 echo "<pre>{$query->sql} - {$query->time}</pre>";
 });
- 
+  */
 
 use Illuminate\Http\Request;
 
@@ -43,6 +43,7 @@ Route::group(['prefix'=>'cartera', 'namespace'=>'Api'], function(){
     Route::get('/clientes'                 , $localController.'clientesCxcPorVendedor');
     Route::get('/cliente/facturas'         , $localController.'facturasPorNit');
     Route::get('/vendedor/total'           , $localController.'totalPorVendedor');
+    Route::get('/cartera'           , $localController.'cartera');
  });
 
 

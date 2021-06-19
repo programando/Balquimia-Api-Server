@@ -21,5 +21,7 @@ class CarteraFacturasController extends Controller
         return Cartera::TotalPorVendedor (  $formData->idTercVendedor );
     }
 
-
+    public function cartera() {
+        dd('cartera');
+    }
 }
