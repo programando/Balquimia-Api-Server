@@ -1,7 +1,12 @@
 <?php
+use Illuminate\Support\Facades\Route;
+  DB::listen(function($query) {
+echo "<pre>{$query->sql} - {$query->time}</pre>";
+});
+ 
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
