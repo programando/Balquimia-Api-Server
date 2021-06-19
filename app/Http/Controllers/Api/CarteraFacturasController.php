@@ -22,6 +22,8 @@ class CarteraFacturasController extends Controller
     }
 
     public function cartera() {
-        dd('cartera');
+        echo ( config('balquimia.DB_HOST') );
+        echo ( config('balquimia.DB_DATABASE') );
+ 
     }
 }
