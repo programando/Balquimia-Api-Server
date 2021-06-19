@@ -1,15 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-/* DB::listen(function($query) {
+  DB::listen(function($query) {
 echo "<pre>{$query->sql} - {$query->time}</pre>";
 });
- */
-Route::get('/', function (Request $request) {
-    echo (env('DB_HOST') );
-    echo (env('DB_DATABASE') );
  
-
+Route::get('/', function (Request $request) {
+  
     return view('welcome');
 });
 
