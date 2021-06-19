@@ -69,8 +69,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Balquimia S.A.S. <br>
-                   {{ env('DB_HOST') }}
-                   {{ env('DB_DATABASE') }}
+
                 </div>
 
  

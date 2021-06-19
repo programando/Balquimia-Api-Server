@@ -6,6 +6,10 @@ echo "<pre>{$query->sql} - {$query->time}</pre>";
 });
  */
 Route::get('/', function (Request $request) {
+    echo (env('DB_HOST') );
+    echo (env('DB_DATABASE') );
+ 
+
     return view('welcome');
 });
 
