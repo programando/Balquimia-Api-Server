@@ -15,3 +15,5 @@ Route::get('frase'          , 'FrasesController@sentenceToday');
 
 //CONTACTOS
 Route::post('contactos', 'TercerosContactatosController@saveContacto');
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
