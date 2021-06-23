@@ -161,7 +161,7 @@ class FctrasElctrncasInvoicesController
  
         private function customerResponse ( $Token, $Reponse ) {
             $Factura      = FctrasElctrnca::where('cstmer_token', "$Token")->first();
-            if ( empty( $Factura['cstmer_rspnse'] ) ) {
+            if ( !empty( $Factura['cstmer_rspnse'] ) ) {
                 $Factura->cstmer_rspnse      = $Reponse;
                 $Factura->cstmer_rspnse_date = now();
                 $Factura->update();
