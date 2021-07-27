@@ -162,9 +162,7 @@ trait FctrasElctrncasTrait {
         }
 
        protected function traitDocumentSuccessResponse( $id_factelctrnca, $dataResponse ){
-            
             $Registro = FctrasElctrnca::findOrFail( $id_factelctrnca );
- 
             $Registro['is_valid']                          = $dataResponse['is_valid'];
             $Registro['document_number']                   = $dataResponse['number'];
             $Registro['uuid']                              = $dataResponse['uuid'];
