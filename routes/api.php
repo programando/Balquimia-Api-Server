@@ -76,7 +76,7 @@ Route::group(['prefix'=>'terceros', 'namespace'=>'Api'], function(){
         Route:: get('/download/{filetype}/{id}'  , $localController.'invoiceFileDownload');
         Route:: get('accepted/{id}'              , $localController.'invoiceAccepted');
         Route:: get('rejected/{id}'              , $localController.'invoiceRejected');
-        Route:: get('logs'                       , $localController.'sentInvoicesLogs');
+        Route:: post('logs'                       , $localController.'sentInvoicesLogs');
     });
  
 
