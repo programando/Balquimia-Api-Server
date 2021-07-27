@@ -162,7 +162,9 @@ trait FctrasElctrncasTrait {
         }
 
        protected function traitDocumentSuccessResponse( $id_factelctrnca, $dataResponse ){
+            
             $Registro = FctrasElctrnca::findOrFail( $id_factelctrnca );
+ 
             $Registro['is_valid']                          = $dataResponse['is_valid'];
             $Registro['document_number']                   = $dataResponse['number'];
             $Registro['uuid']                              = $dataResponse['uuid'];
@@ -170,7 +172,7 @@ trait FctrasElctrncasTrait {
             $Registro['status_code']                       = $dataResponse['status_code'];
             $Registro['status_description']                = $dataResponse['status_description'];
             $Registro['status_message']                    = $dataResponse['status_message'];
-            $Registro['xml_file_name']                     = $dataResponse['xml_file_name'];
+            $Registro['xml_file_name']                     = $dataResponse['xml_name'];
             $Registro['zip_name']                          = $dataResponse['zip_name'];
             $Registro['cstmer_token']                      = Str::random(60); 
             $Registro->save();

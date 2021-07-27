@@ -27,9 +27,19 @@ class FctrasElctrncasInvoicesController
 {
    use FctrasElctrncasTrait, ApiSoenac, QrCodeTrait, PdfsTrait;
 
-   private $jsonObject = [] ;
+   private $jsonObject = [] , $jsonResponse = [];
   
- 
+        public function sentInvoicesLogs (Request $FormData) {
+            $prfjo_dcmnto = trim( $FormData->prfjo_dcmnto);
+            $nro_dcmnto   = $FormData->nro_dcmnto;
+            $partUrl      = "logs/$prfjo_dcmnto$nro_dcmnto";
+            $response     = $this->ApiSoenac->postRequest( $partUrl, $this->jsonResponse ) ;   
+            $Documento    = FctrasElctrnca::where('prfjo_dcmnto', "$prfjo_dcmnto")
+                                            ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
+            $this->documentsProcessReponse( $Documento, $response[0] ) ;
+        }
+
+
         public function invoices() {
             $URL = 'invoice'  ;
             $Documentos = FctrasElctrnca::InvoicesToSend()->get();       
@@ -38,7 +48,7 @@ class FctrasElctrncasInvoicesController
                 //return $this->jsonObject;
                 $response   = $this->ApiSoenac->postRequest( $URL, $this->jsonObject ) ;    
                 $this->traitUpdateJsonObject ( $Documento );
-                $this->documentsProcessReponse( $Documento, $response ) ;
+                $this->documentsProcessReponse( $Documento, $response[0] ) ;
                  
             }  
         }
@@ -65,16 +75,20 @@ class FctrasElctrncasInvoicesController
             }
 
  
+
+        
         private  function documentsProcessReponse($Documento,  $response ){
             $id_fact_elctrnca           = $Documento['id_fact_elctrnca']  ;
+           
             if ( array_key_exists('is_valid',$response) ) {
-                $this->responseContainKeyIsValid ( $id_fact_elctrnca, $response );                   
+                $this->responseContainKeyIsValid ( $id_fact_elctrnca, $response );                 
             } else {       
                 $this->traitdocumentErrorResponse( $id_fact_elctrnca, $response ); 
             }
         }
 
     private function responseContainKeyIsValid($idfact_elctrnca , $response ){
+             
         if ( $response['is_valid'] == true || is_null( $response['is_valid'] ) ) {
             $this->traitDocumentSuccessResponse ( $idfact_elctrnca , $response );
             $this->invoiceSendToCustomer  ( $idfact_elctrnca ); 

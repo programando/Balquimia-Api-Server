@@ -32,7 +32,7 @@ class FctrasElctrncasNotesCrController
                $this->notesToSend ( $Documento, $TipoNota) ;
                $response   = $this->ApiSoenac->postRequest( $URL, $this->jsonObject ) ;  
                $this->traitUpdateJsonObject ( $Documento );
-               $this->documentsProcessReponse( $Documento, $response ) ;  
+               $this->documentsProcessReponse( $Documento, $response[0] ) ;  
             }  
       }
 
