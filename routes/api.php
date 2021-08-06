@@ -89,6 +89,8 @@ Route::group(['prefix'=>'productos', 'namespace'=>'Api'], function() {
 
 // NOTES
     Route::group(['prefix'=>'notes', 'namespace'=>'Api'], function() {
-        Route::get('pdf/{id}'             , 'FctrasElctrncasNotesCrController@noteSendToCustomer');
-        Route::get('{tpNote}'             , 'FctrasElctrncasNotesCrController@notes');
+        $localController = 'FctrasElctrncasNotesCrController@';
+        Route::get('pdf/{id}'             , $localController.'noteSendToCustomer');
+        Route::get('{tpNote}'             , $localController.'notes');
+        Route::post('logs'                       , $localController.'sentNotesLogs');
     });

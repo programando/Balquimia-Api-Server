@@ -19,9 +19,23 @@ class FctrasElctrncasNotesCrController
 {
     use FctrasElctrncasTrait,  ApiSoenac, QrCodeTrait, PdfsTrait;
 
-    private $jsonObject = [] ;
+    private $jsonObject = [], $jsonResponse = [];
     private  $keyMonetary ,$keyLines ;
     
+
+        public function sentNotesLogs (Request $FormData) {
+            $prfjo_dcmnto = trim( $FormData->prfjo_dcmnto);
+            $nro_dcmnto   = $FormData->nro_dcmnto;
+            $partUrl      = "logs/291b4f344a50a68bc5ceeb2e28ec9610081430d888266b1801e398ab9ee22c0f1051171de3971d7aa8efd4bf6c642b04";
+            $response     = $this->ApiSoenac->postRequest( $partUrl, $this->jsonResponse ) ;   
+            
+            $Documento    = FctrasElctrnca::where('prfjo_dcmnto', "$prfjo_dcmnto")
+                                            ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
+            $this->documentsProcessReponse( $Documento, $response[0] ) ;
+        }
+
+
+
     public function notes( $TipoNota ) {
           $URL = $this->getNotesUrl($TipoNota );
            
@@ -115,7 +129,7 @@ class FctrasElctrncasNotesCrController
         $Note = $Note[0];
         $this->getNameFilesTrait($Note, true );
         $this->noteCreateFilesToSend ( $id_fact_elctrnca, $Note);
-        NoteWasCreatedEvent::dispatch ($Note);
+        //NoteWasCreatedEvent::dispatch ($Note);
     } 
 
     private function noteCreateFilesToSend ( $id_fact_elctrnca, $Note){
