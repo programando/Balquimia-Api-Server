@@ -32,7 +32,7 @@ class FctrasElctrncasNotesCrController
             $Documento    = FctrasElctrnca::where('prfjo_dcmnto', "$prfjo_dcmnto")
                                             ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
             $this->documentsProcessReponse( $Documento, $response[0] ) ;
-            return $response;
+            //return $response;
         }
 
 
