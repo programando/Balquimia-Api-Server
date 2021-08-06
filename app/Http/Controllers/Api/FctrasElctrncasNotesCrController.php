@@ -32,6 +32,7 @@ class FctrasElctrncasNotesCrController
             $Documento    = FctrasElctrnca::where('prfjo_dcmnto', "$prfjo_dcmnto")
                                             ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
             $this->documentsProcessReponse( $Documento, $response[0] ) ;
+            return $response;
         }
 
 
@@ -129,7 +130,7 @@ class FctrasElctrncasNotesCrController
         $Note = $Note[0];
         $this->getNameFilesTrait($Note, true );
         $this->noteCreateFilesToSend ( $id_fact_elctrnca, $Note);
-        //NoteWasCreatedEvent::dispatch ($Note);
+        NoteWasCreatedEvent::dispatch ($Note);
     } 
 
     private function noteCreateFilesToSend ( $id_fact_elctrnca, $Note){
