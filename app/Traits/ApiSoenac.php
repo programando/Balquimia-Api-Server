@@ -7,15 +7,17 @@ use App\Models\FctrasElctrncasMcipio;
  
 use Cache;
 trait ApiSoenac {
-   public $ApiSoenac ;
+   public $ApiSoenac, $Letra ;
+      
+      
 
-      public function __construct ( GuzzleHttp $GuzzleHttps ) {
-         $this->ApiSoenac = $GuzzleHttps;
+      public function __construct ( GuzzleHttp   $GuzzleHttps) {
+         $this->ApiSoenac = $GuzzleHttps; 
       }
 
       public function traitSoenacResolutions() {
-         $Resoluciones = Cache::tags('ResolucOctubre2020')
-                    ->rememberForEver('ResolucOctubre2020', function() {
+         $Resoluciones = Cache::tags('ResolucOctubre2021')
+                    ->rememberForEver('ResolucOctubre2021', function() {
                              return $this->ApiSoenac->getRequest('config/resolutions' ) ; 
                    }
            );
@@ -25,7 +27,7 @@ trait ApiSoenac {
       public function traitSoenacResolutionsInvoice() {
          $Resolutions =   $this->traitSoenacResolutions();  
          foreach ($Resolutions as $Resolution) {
-            if ( $Resolution['id'] === 7 ){
+            if ( $Resolution['id'] === 9 ){
                return $Resolution;
             }
          }

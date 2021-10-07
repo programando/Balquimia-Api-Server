@@ -67,12 +67,12 @@ class FctrasElctrnca extends Model
 
 		public function fields(){
 			return [
-					'id'					 => $this->id_fact_elctrnca,
-					'prefijo'			 => $this->prfjo_dcmnto,
+					'id'					  => $this->id_fact_elctrnca,
+					'prefijo'			  => $this->prfjo_dcmnto,
 					'number'        => $this->number,
 					'fcha_dcmnto'   => $this->fcha_dcmnto,
 					'diffForHumans' => $this->fcha_dcmnto->diffForHumans(),
-					'fecha-factura'        => $this->fcha_dcmnto->format('d-M-Y'),
+					'fecha-factura' => $this->fcha_dcmnto->format('d-M-Y'),
 					'rspnse_dian'   => $this->is_valid,
 			];
 		}

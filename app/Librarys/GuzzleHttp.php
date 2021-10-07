@@ -10,10 +10,13 @@ class GuzzleHttp {
     protected $headers;
 
     public function __construct( ) {      
+      
         $this->Guzzle = new Client([
-            'base_uri' => config('company.FACTURA_ELECT_URL_BASE'),
+            'base_uri'   => config('company.FACTURA_ELECT_URL_BASE'),
             'exceptions' => false,
         ]);
+
+   
          $this->headers     = [
                 'Content-Type'    => 'application/json',
                 'Accept'          => 'application/json',
@@ -30,14 +33,17 @@ class GuzzleHttp {
          return    json_decode($response->getBody()->getContents(), true) ;  
       }
 
-    public function postRequest ( $URL,$Body){
+    public function postRequest ( $URL,$Body , $requestNomina=false ){
+         $urlRequest    = $requestNomina == false ? config('company.FACTURA_ELECT_URL_BASE')  : config('company.NOMINA_ELECT_URL_BASE');
          $response = $this->Guzzle->request(
             'POST', $URL, [ 
-               'headers' => $this->headers ,
-               'json'    => $Body
+               'headers'  => $this->headers ,
+               'json'     => $Body,
+               'base_uri' =>  $urlRequest
             ]); 
             return json_decode($response->getBody()->getContents(),true);
     }
+ 
  
  
 }

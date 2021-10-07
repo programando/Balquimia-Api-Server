@@ -68,6 +68,14 @@ Route::group(['prefix'=>'terceros', 'namespace'=>'Api'], function(){
  });
 
 
+// NOMINA ELECTRONICA
+    Route::group(['prefix'=>'nomina', 'namespace'=>'Api'], function() {
+        $localController = 'NominaElctrncaController@';
+        Route:: get('/reporte/dian'          , $localController.'dianReporting');
+    });
+ 
+
+
 // INVOICES
     Route::group(['prefix'=>'invoices', 'namespace'=>'Api'], function() {
         $localController = 'FctrasElctrncasInvoicesController@';
