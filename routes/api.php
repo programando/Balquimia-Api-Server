@@ -71,7 +71,9 @@ Route::group(['prefix'=>'terceros', 'namespace'=>'Api'], function(){
 // NOMINA ELECTRONICA
     Route::group(['prefix'=>'nomina', 'namespace'=>'Api'], function() {
         $localController = 'NominaElctrncaController@';
-        Route:: get('/reporte/dian'          , $localController.'dianReporting');
+        Route:: post('/reporte/dian'          , $localController.'dianReporting');
+        Route:: post('/nota/ajuste'           , $localController.'notaAjusteNomina');
+        Route:: post('zipkey/{id}'           , $localController.'zipKey');
     });
  
 

@@ -13,11 +13,11 @@ trait NominaElctrncaTrait {
 
 
     protected function traitXmlSequenceNumber ( $XmlSequenceNumber, &$jsonObject ) {
-        $jsonObject['sync']=true;
+        $jsonObject['sync']=false;
         $jsonObject['xml_sequence_number']=[
               'worker_code' => trim( $XmlSequenceNumber['worker_code'] ),
               'prefix'      => $XmlSequenceNumber['prefix'],
-              'number'      => $XmlSequenceNumber['number']
+              'number'      => $XmlSequenceNumber['id_nomina_elctrnca']
         ];
     }
 
@@ -30,7 +30,12 @@ trait NominaElctrncaTrait {
 
        ];
     }
-
+// 56a385de-6d08-4a67-98d7-d0c9d265c3ca
+    protected function traitXmlProvider ( &$jsonObject ) {
+       $jsonObject['xml_provider']=[
+         'name' => 'BALQUIMIA S.A.S.',                                     
+       ];
+    }
 
    protected function traitGeneralInformation( $GeneralInformation,  &$jsonObject ) {
        $jsonObject['general_information']=[
@@ -92,7 +97,7 @@ trait NominaElctrncaTrait {
           'worked_days'      => $Ear[0]['basic_worked_days'],
           'worker_salary'    => $Ear[0]['basic_worker_salary']
       ];
-      $jsonObject['basic'][] =$Basic;
+      $jsonObject['earn']['basic'] =$Basic;
     }
 
    protected function traitDeductions( $Deductions, &$jsonObject ) {
