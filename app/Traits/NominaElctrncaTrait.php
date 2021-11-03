@@ -125,7 +125,12 @@ trait NominaElctrncaTrait {
             $Registro['is_valid']           = $dataResponse['is_valid'];
             $Registro['number_dian']        = $dataResponse['number'];
             $Registro['uuid']               = $dataResponse['uuid'];
-            $Registro['zip_key']            = $dataResponse['zip_key'];
+            if ( is_null($dataResponse['zip_key']) ){
+                $Registro['zip_key']            =   '';
+            }else{
+              $Registro['zip_key']            =   $dataResponse['zip_key'];
+            }
+
             $Registro['status_description'] = substr( $dataResponse['status_description'],0,250 );
             $Registro['status_message']     = substr( $dataResponse['status_message'], 0,250 );
             $Registro['xml_file_name']      = $dataResponse['xml_name'];
