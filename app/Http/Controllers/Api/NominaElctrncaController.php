@@ -37,7 +37,7 @@ class NominaElctrncaController extends Controller
        
        
        public function dianReporting () {
-              $URL           = 'payroll/102/845ee3d1-c109-45b5-8cc1-96968c97d7a4'  ;
+              $URL           = 'payroll/102'  ;
               $requestNomina = true ;
               $Empleados     = Nomina::dianReporting();
               foreach ($Empleados as $Empleado ) {
