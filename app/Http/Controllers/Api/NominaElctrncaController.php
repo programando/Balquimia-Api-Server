@@ -31,49 +31,45 @@ class NominaElctrncaController extends Controller
              $requestNomina               = true ;
              $this->jsonObject['environment']['url']     = 'https://vpfe-hab.dian.gov.co/WcfDianCustomerServices.svc?wsdl'  ;
              $response                    = $this->ApiSoenac->postRequest( $URL, $this->jsonObject, $requestNomina ) ; 
-             return $response ;
+             $this->documentsProcessReponse( '365', $response ) ;
+             return $response;
        }
        
        
        public function dianReporting () {
-              $URL = 'payroll/102/99727e02-ef5e-4259-afc0-29ee8829e87b'  ;
+              $URL           = 'payroll/102/845ee3d1-c109-45b5-8cc1-96968c97d7a4'  ;
               $requestNomina = true ;
-              $Empleados = Nomina::dianReporting();
+              $Empleados     = Nomina::dianReporting();
               foreach ($Empleados as $Empleado ) {
                   $this->reportingInformation ( $Empleado );
                   //return $this->jsonObject;
                   $response   = $this->ApiSoenac->postRequest( $URL, $this->jsonObject, $requestNomina ) ;  
+                  $this->documentsProcessReponse( $Empleado['id_nomina_elctrnca'], $response ) ;
                   return  $response ;
               }
              //return $this->jsonObject;
        }
 
        public function notaAjusteNomina () {
-              $this->jsonObject['sync']=false;
+              $this->jsonObject['sync'] = true;
               $this->traitEnvironment            ( $this->jsonObject                                             ) ;
               $payroll_reference =[
-                            "number"     => "NOM258",
-                            "uuid"       => "b06b864c22bfe62d71d052538f29d6167c4bb04c1db60e7a57b5fc96198ac0b03aafdadece3dc1ed1be55cd813424099",
+                            "number"     => "NOM314",
+                            "uuid"       => "c3b4ea68246f416fa0deb9683f30901c038192a3ac5cbd9dab686608ceb869e607500d5806232c5d186144a9fdad9d87",
                             "issue_date" => "2021-10-14"
               ];
               $xml_sequence_number =[
                             "prefix"=> "NOM",
-                            "number"=> 258
+                            "number"=>45
               ];
               $general_information =["payroll_period_id"=> "5",  ];    
-              $employer =[
-                            "identification_number" => 1005877831,
-                            "municipality_id"       => 1006,
-                            "address"               => "XYZ - 123"
-              ];                        
+                     
               $this->jsonObject['type_payroll_note_id'] = '2' ;
               $this->jsonObject['payroll_reference']    = $payroll_reference;
               $this->jsonObject['xml_sequence_number']  = $xml_sequence_number;
               $this->jsonObject['general_information']  = $general_information;
-              $this->jsonObject['employer']             = $employer;
-
-              //return  $this->jsonObject  ;
-              $URL                 = 'payroll/103/99727e02-ef5e-4259-afc0-29ee8829e87b'  ;
+              $this->traitEmployer               ( $this->jsonObject                                             ) ;
+              $URL                 = 'payroll/103/845ee3d1-c109-45b5-8cc1-96968c97d7a4'  ;
               $requestNomina       = true ;
               $response            = $this->ApiSoenac->postRequest( $URL, $this->jsonObject, $requestNomina ) ; 
               return  $response  ;
@@ -103,5 +99,25 @@ class NominaElctrncaController extends Controller
               $this->traitTotals                 ( $Empleado                             ,  $this->jsonObject  ) ;
 
        }
+
+
+        private  function documentsProcessReponse($id_nomina_elctrnca,  $response ){
+
+            if ( array_key_exists('is_valid',$response) ) {
+                $this->responseContainKeyIsValid ( $id_nomina_elctrnca, $response );                 
+            } //else {       
+                //$this->traitdocumentErrorResponse( $id_nomina_elctrnca, $response ); 
+            //}
+        }
+
+    private function responseContainKeyIsValid($id_nomina_elctrnca , $response ){
+             
+        if ( $response['is_valid'] == true || is_null( $response['is_valid'] ) ) {
+            $this->traitDocumentSuccessResponse ( $id_nomina_elctrnca , $response );
+        } //else {
+            //$this->traitdocumentErrorResponse( $id_nomina_elctrnca, $response );     
+        //}
+    }
+
 
 }

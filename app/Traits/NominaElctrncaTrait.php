@@ -4,7 +4,7 @@ namespace App\Traits;
  
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\NominaElctrncaXmlSequenceNumber as Nomina;
 use App\Helpers\DatesHelper as Fecha;
 use App\Helpers\NumbersHelper as Numbers;
 use App\Helpers\StringsHelper as Strings;
@@ -13,7 +13,7 @@ trait NominaElctrncaTrait {
 
 
     protected function traitXmlSequenceNumber ( $XmlSequenceNumber, &$jsonObject ) {
-        $jsonObject['sync']=false;
+        $jsonObject['sync']=true;
         $jsonObject['xml_sequence_number']=[
               'worker_code' => trim( $XmlSequenceNumber['worker_code'] ),
               'prefix'      => $XmlSequenceNumber['prefix'],
@@ -24,11 +24,10 @@ trait NominaElctrncaTrait {
 
     protected function traitEnvironment ( &$jsonObject ) {
        $jsonObject['environment']=[
-         'type_environment_id' => '2',                                      // 1 producction,   2 habilitacion o pruebas
-         'id'                  => 'e777680e-2f6b-40f2-9f65-cd61a20186c5',   // identitication
+         'type_environment_id' => '1',                                      // 1 producction,   2 habilitacion o pruebas
+         'id'                  => 'a21164d4-4ebb-45f6-a1fc-2562c51f5e8a',   // identitication
          'pin'                 => '55214',                                  // pin
-
-       ];
+       ]; 
     }
 // 56a385de-6d08-4a67-98d7-d0c9d265c3ca
     protected function traitXmlProvider ( &$jsonObject ) {
@@ -103,14 +102,14 @@ trait NominaElctrncaTrait {
    protected function traitDeductions( $Deductions, &$jsonObject ) {
       $health = [
           'percentage'      => $Deductions[0]['health_percentage'],
-          'payment'    => $Deductions[0]['health_payment']
+          'payment'         => $Deductions[0]['health_payment']
       ];
       $pension_fund = [
           'percentage'      => $Deductions[0]['pension_fund_percentage'],
-          'payment'    => $Deductions[0]['pension_payment']
+          'payment'         => $Deductions[0]['pension_payment']
       ];      
-      $jsonObject['deduction']['health'] =$health;
-       $jsonObject['deduction']['pension_fund'] =$pension_fund;
+      $jsonObject['deduction']['health']       = $health;
+      $jsonObject['deduction']['pension_fund'] = $pension_fund;
     }
 
 
@@ -121,10 +120,19 @@ trait NominaElctrncaTrait {
     }
 
 
-
-
-
-
-
+       protected function traitDocumentSuccessResponse( $id_nomina_elctrnca, $dataResponse ){
+            $Registro = Nomina::findOrFail( $id_nomina_elctrnca );
+            $Registro['is_valid']           = $dataResponse['is_valid'];
+            $Registro['number_dian']        = $dataResponse['number'];
+            $Registro['uuid']               = $dataResponse['uuid'];
+            $Registro['zip_key']            = $dataResponse['zip_key'];
+            $Registro['status_description'] = substr( $dataResponse['status_description'],0,250 );
+            $Registro['status_message']     = substr( $dataResponse['status_message'], 0,250 );
+            $Registro['xml_file_name']      = $dataResponse['xml_name'];
+            $Registro['zip_name']           = $dataResponse['zip_name'];
+            $Registro['rpte_dian']          = true;
+            $Registro->save();  
+        }
+ 
   }
 ?>
