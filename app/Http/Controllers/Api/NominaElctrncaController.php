@@ -45,7 +45,7 @@ class NominaElctrncaController extends Controller
                   //return $this->jsonObject;
                   $response   = $this->ApiSoenac->postRequest( $URL, $this->jsonObject, $requestNomina ) ;  
                   $this->documentsProcessReponse( $Empleado['id_nomina_elctrnca'], $response ) ;
-                  return  $response ;
+                  //return  $response ;
               }
              //return $this->jsonObject;
        }
