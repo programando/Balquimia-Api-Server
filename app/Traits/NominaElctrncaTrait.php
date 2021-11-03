@@ -125,10 +125,10 @@ trait NominaElctrncaTrait {
             $Registro['is_valid']           = $dataResponse['is_valid'];
             $Registro['number_dian']        = $dataResponse['number'];
             $Registro['uuid']               = $dataResponse['uuid'];
-            if ( is_null($dataResponse['zip_key']) ){
+            if ( $dataResponse['zip_key'] == null ){
                 $Registro['zip_key']            =   '';
             }else{
-              $Registro['zip_key']            =   $dataResponse['zip_key'];
+                $Registro['zip_key']            =   $dataResponse['zip_key'];
             }
 
             $Registro['status_description'] = substr( $dataResponse['status_description'],0,250 );
