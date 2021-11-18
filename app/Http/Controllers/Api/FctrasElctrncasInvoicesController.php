@@ -150,7 +150,7 @@ class FctrasElctrncasInvoicesController
             $Fechas       = [];
             $fechaInicial = Carbon::parse($FechaFactura);
             $diasCredito  = $fechaInicial->diffInDays($FechaVencimiento)+1;
-            $diasCredito  = $diasCredito > 0 ? " - $diasCredito días" : '';
+            $diasCredito  = $diasCredito > 1 ? " - $diasCredito días" : '';
             $FechaFactura = DatesHelper::DocumentDate( $FechaFactura  );
             $FechaVcmto   = DatesHelper::DocumentDate( $FechaVencimiento  );
             $Fechas = [
