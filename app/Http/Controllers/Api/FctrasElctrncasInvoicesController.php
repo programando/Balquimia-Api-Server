@@ -148,15 +148,19 @@ class FctrasElctrncasInvoicesController
 
         private function FechasFactura ( $FechaFactura, $FechaVencimiento) {
             $Fechas       = [];
-            $FechaFactura = DatesHelper::DocumentDate( $FechaFactura  );  
+            $fechaInicial = Carbon::parse($FechaFactura);
+            $diasCredito  = $fechaInicial->diffInDays($FechaVencimiento)+1;
+            $diasCredito  = $diasCredito > 0 ? " - $diasCredito días" : '';
+            $FechaFactura = DatesHelper::DocumentDate( $FechaFactura  );
             $FechaVcmto   = DatesHelper::DocumentDate( $FechaVencimiento  );
             $Fechas = [
-                'FactDia'   => $FechaFactura->day,
-                'FactMes'   => GeneralHelper::nameOfMonth( $FechaFactura->month),
-                'Factyear'  => $FechaFactura->year,
-                'VenceDia'  => $FechaVcmto->day,
-                'VenceMes'  => GeneralHelper::nameOfMonth( $FechaVcmto->month),
-                'VenceYear' => $FechaVcmto->year
+                'FactDia'     => $FechaFactura->day,
+                'FactMes'     => GeneralHelper::nameOfMonth( $FechaFactura->month),
+                'Factyear'    => $FechaFactura->year,
+                'VenceDia'    => $FechaVcmto->day,
+                'VenceMes'    => GeneralHelper::nameOfMonth( $FechaVcmto->month),
+                'VenceYear'   => $FechaVcmto->year,
+                'diasCredito' => $diasCredito
             ];
             return $Fechas;
         }

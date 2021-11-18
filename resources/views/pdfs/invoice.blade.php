@@ -144,10 +144,11 @@
                     <td width="20%" class="p5">{{ $Additionals['nro_tlfno'] }}</td>
                 </tr>
                 <tr>
+                   
                     <td width="10%" class="p5 tB">Email :</td>
                     <td width="25%" class="p5">{{ $Customer['email'] }}</td>
                     <td width="10%" class="p5 tB">Forma Pago:</td>
-                    <td width="25%" class="p5">{{ $Additionals['frma_pgo'] }}</td>
+                    <td width="25%" class="p5">{{ $Additionals['frma_pgo'] . $Fechas['diasCredito'] }}</td>
 
                 </tr>
 
