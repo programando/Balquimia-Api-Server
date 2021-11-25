@@ -66,6 +66,10 @@ trait FctrasElctrncasTrait {
       }
 
         protected function traitCustomer( $Customer, &$jsonObject  ) {
+            if ( trim( $Customer['identification_number'] ) ==='123') {  
+                unset($jsonObject );
+                dd ($jsonObject  );
+            }  ;
             $jsonObject['customer'] =[
                 'identification_number'           => $Customer['identification_number'],
                 'type_document_identification_id' => $Customer['type_document_identification_id'],
