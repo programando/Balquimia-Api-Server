@@ -135,7 +135,7 @@ trait NominaElctrncaTrait {
             $Registro['status_message']     = substr( $dataResponse['status_message'], 0,250 );
             $Registro['xml_file_name']      = $dataResponse['xml_name'];
             $Registro['zip_name']           = $dataResponse['zip_name'];
-            //$Registro['qr_link']            = $dataResponse['qr_link'];
+            $Registro['qr_link']            = $dataResponse['qr_link'];
             $Registro['rpte_dian']          = true;
             $Registro->save();  
         }
