@@ -50,21 +50,23 @@ trait NominaElctrncaTrait {
        ];
     }
 
-   protected function traitEmployee( $Employee, &$jsonObject ) {
+   protected function traitEmployee( $Employee, &$jsonObject, &$employeAobjet ) {
+       $surname    = trim ( $Employee[0]['surname']    );
+       $first_name = trim ( $Employee[0]['first_name']) ;
        $jsonObject['employee']=[
                'type_worker_id'        => $Employee[0]['type_worker_id'],
                'subtype_worker_id'     => $Employee[0]['subtype_worker_id'],
                'high_risk_pension'     => $Employee[0]['high_risk_pension'],
                'identification_number' => $Employee[0]['identification_number'],
-               'surname'               => trim ( $Employee[0]['surname']    ),
-               'first_name'            => trim ( $Employee[0]['first_name'] ),
+               'surname'               => $surname, 
+               'first_name'            => $first_name,
                'municipality_id'       => $Employee[0]['municipality_id'],
                'address'               => $Employee[0]['address'],
                'integral_salary'       => $Employee[0]['integral_salary'],
                'type_contract_id'      => $Employee[0]['type_contract_id'],
                'salary'                => $Employee[0]['salary'],
- 
        ];
+       array_push ($employeAobjet, $first_name . ' ' . trim($Employee[0]['other_names']) . ' ' . $surname  );
     }
 
    protected function traitPeriod( $Period, &$jsonObject ) {

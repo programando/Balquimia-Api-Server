@@ -18,21 +18,12 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-       'App\Events\InvoiceWasCreatedEvent' => [
-            'App\Listeners\InvoiceSendXmlPdfToCustomer',
-        ],
-        'App\Events\InvoiceWasCreatedEventEmailCopy' => [
-            'App\Listeners\InvoiceSendXmlPdfToCustomerEmailCopy',
-        ],       
-       'App\Events\NoteWasCreatedEvent' => [
-            'App\Listeners\NoteSendXmlPdfToCustomer',
-        ],
-        'App\Events\UserPasswordResetEvent' => [
-            'App\Listeners\UserPasswordReset',
-        ],
-       'App\Events\TercerosContactosEvent' => [
-           'App\Listeners\TercerosContactosListener',  
-        ]
+       'App\Events\InvoiceWasCreatedEvent'          => ['App\Listeners\InvoiceSendXmlPdfToCustomer', ],
+       'App\Events\InvoiceWasCreatedEventEmailCopy' => ['App\Listeners\InvoiceSendXmlPdfToCustomerEmailCopy', ],
+       'App\Events\NoteWasCreatedEvent'             => ['App\Listeners\NoteSendXmlPdfToCustomer', ],
+       'App\Events\TercerosContactosEvent'          => ['App\Listeners\TercerosContactosListener', ],
+       'App\Events\TercerosNominaWasReportedEvent'  => ['App\Listeners\TercerosNominaWasReportedListener', ],
+       'App\Events\UserPasswordResetEvent'          => ['App\Listeners\UserPasswordReset',],
     ];
 
     /**

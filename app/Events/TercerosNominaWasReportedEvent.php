@@ -10,17 +10,14 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TercerosContactosEvent
+class TercerosNominaWasReportedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $formDataContact ;
-    public $email, $comentario;
-
-    public function __construct( $email, $comentario)
+    public $Empleados;
+    public function __construct( $Empleados)
     {
-        $this->email        = $email;
-        $this->comentario   = $comentario;
-        
-    }  
+        $this->Empleados = $Empleados;
+    }
+
 }
