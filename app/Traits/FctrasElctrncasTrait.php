@@ -183,9 +183,9 @@ trait FctrasElctrncasTrait {
             $FctrasDataReponse = new FctrasElctrncasDataResponse;
             $FctrasDataReponse->id_fact_elctrnca                   = $id_factelctrnca;
             $FctrasDataReponse->qr_data                            = $dataResponse['qr_data'];
-            //$FctrasDataReponse->application_response_base64_bytes  = $dataResponse['application_response_base64_bytes'];
             $FctrasDataReponse->attached_document_base64_bytes     = $dataResponse['attached_document_base64_bytes'];
-            //$FctrasDataReponse->pdf_base64_bytes                   = $dataResponse['pdf_base64_bytes'];
+            $FctrasDataReponse->pdf_base64_bytes                   = '' ; //$dataResponse['pdf_base64_bytes'];
+            $FctrasDataReponse->application_response_base64_bytes  = '' ; //$dataResponse['application_response_base64_bytes'];
             $FctrasDataReponse->save(); 
             
         }
