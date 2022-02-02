@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 use App\Helpers\GeneralHelper  ;
 use App\Models\FctrasElctrnca   ;
+use App\Models\FctrasElctrncasDataResponse as DataResponse ;   ;
 
 use App\Traits\FctrasElctrncasTrait;
 use App\Models\FctrasElctrncasMcipio;
@@ -36,6 +37,7 @@ class FctrasElctrncasInvoicesController
             $response     = $this->ApiSoenac->postRequest( $partUrl, $this->jsonResponse ) ;   
             $Documento    = FctrasElctrnca::where('prfjo_dcmnto', "$prfjo_dcmnto")
                                             ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
+            DataResponse::where('id_fact_elctrnca', $Documento['id_fact_elctrnca'])->delete();
             $this->documentsProcessReponse( $Documento, $response[0] ) ;
         }
 
