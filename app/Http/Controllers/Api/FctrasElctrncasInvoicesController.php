@@ -39,6 +39,7 @@ class FctrasElctrncasInvoicesController
                                             ->where('nro_dcmnto',$nro_dcmnto  ) ->first();
             DataResponse::where('id_fact_elctrnca', $Documento['id_fact_elctrnca'])->delete();
             $this->documentsProcessReponse( $Documento, $response[0] ) ;
+            return $Documento['id_fact_elctrnca'];
         }
 
 
