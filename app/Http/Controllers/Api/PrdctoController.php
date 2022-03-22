@@ -13,14 +13,21 @@ use App\Http\Resources\ShowRecordCollection;
 
 class PrdctoController extends Controller
 {
-    public function listaPrecios() {
+    
+    public function getProductosPorClase ( Request $FormData ) {
+            return Prdctos::getProductosPorClase ( $FormData->id_clse_prdcto) ;
+            //return Prdctos::with('presentaciones')->whereIdClsePrdcto($FormData->id_clse_prdcto )->get();
+    }
+    
+    public function getProductosPorLinea ( Request $FormData ) {
+            return Prdctos::getProductosPorLinea ( $FormData->id_linea) ;
+    }
 
+    public function listaPrecios() {
         $ProductosPrecios = Cache::tags('ProductosPrecios')->rememberForever('ProductosPrecios', function()  {
               return     DB::select(' call prdctos_erp_lista_precios_all ()');
         });
         return $ProductosPrecios;
-
-       
     }
 
     public function show( $idproducto  ){

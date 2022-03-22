@@ -9,19 +9,7 @@ echo "<pre>{$query->sql} - {$query->time}</pre>";
 use Illuminate\Http\Request;
 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-
-
-*/
-
+ 
 
 Route::post('/login'            , 'TercerosUserController@login')->name('login');
 Route::post('/logout'           , 'TercerosUserController@logout')->name('logout'); 
@@ -33,9 +21,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //PRODUCTOS
-Route::group(['prefix'=>'productos', 'namespace'=>'Api', 'middleware' => ['auth:sanctum']], function() {
-        Route::get('/precios'                 , 'PrdctoController@listaPrecios')->name('lista-precios');
+Route::group(['prefix'=>'productos', 'namespace'=>'Api' ], function() {
+        //Route::get('/precios'                 , 'PrdctoController@listaPrecios')->name('lista-precios');
+        Route::get('/por-clase'                 , 'PrdctoController@getProductosPorClase');
+        Route::get('/por-linea'                 , 'PrdctoController@getProductosPorLinea');
  });
+
+//CLASES DE PRODUCTO
+Route::group(['prefix'=>'clases/productos', 'namespace'=>'Api'], function() {
+        Route::get('/listado'                 , 'MstroClasesPrdctoController@getClasesPorLinea');
+ });
+
 
 //CARTERA CLIENTES CxC
 Route::group(['prefix'=>'cartera', 'namespace'=>'Api'], function(){

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+use DB ;
  
 class Prdcto extends Model
 {
@@ -26,11 +27,22 @@ class Prdcto extends Model
 													'dnsdad',			'mp_fbrcda',				'mp_ctrlda',				'prstmo',								'inactivo'
 	];
 
+
+  
+ public static function getProductosPorClase ( $IdClaseProducto ) {
+	 	return     DB::select(' call prodductos_por_clase_producto ( ?)', array($IdClaseProducto));
+ }
+
+ public static function getProductosPorLinea ( $IdLinea ) {
+	 	return     DB::select(' call productos_por_linea ( ?)', array($IdLinea));
+ }
+
+
 	public function fields(){
 			return [
 					'id'					 => $this->id_prdcto_ppal,
-					'clave'			 => $this->clave,
-					'nom_prdcto'        => $this->nom_prdcto,
+					'clave'			 	 => $this->clave,
+					'nom_prdcto'   => $this->nom_prdcto,
 			];
 		}
 
