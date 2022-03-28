@@ -11,6 +11,6 @@ use App\Models\MstroLinea as Lineas;
 class MstroLineasController extends Controller
 {
     public function activas () {
-        return      DB::select(' call mstro_lineas_listado_activas ()');
+        return     Lineas::where('inactivo','0')->orderBy('orden_web')->get();
     }
 }

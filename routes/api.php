@@ -20,6 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+//LINEAS
+Route::group(['prefix'=>'lineas', 'namespace'=>'Api' ], function() {
+    Route::get('/activas'                 , 'MstroLineasController@activas');
+});
+
+
 //PRODUCTOS
 Route::group(['prefix'=>'productos', 'namespace'=>'Api' ], function() {
         //Route::get('/precios'                 , 'PrdctoController@listaPrecios')->name('lista-precios');
@@ -29,7 +36,7 @@ Route::group(['prefix'=>'productos', 'namespace'=>'Api' ], function() {
 
 //CLASES DE PRODUCTO
 Route::group(['prefix'=>'clases/productos', 'namespace'=>'Api'], function() {
-        Route::get('/listado'                 , 'MstroClasesPrdctoController@getClasesPorLinea');
+        Route::get('/por-linea'                 , 'MstroClasesPrdctoController@getClasesPorLinea');
  });
 
 

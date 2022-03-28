@@ -6,15 +6,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-
+ 
 class MstroLinea extends Model
 {
-	protected $table      = 'mstro_lineas';
+	protected $table = 'mstro_lineas';
 	protected $primaryKey = 'id_linea';
-	public    $timestamps = false;
+	public $timestamps = false;
 
 	protected $casts = [
 		'orden_local' => 'int',
@@ -32,10 +31,7 @@ class MstroLinea extends Model
 		'inactivo'
 	];
 
-	public function prdctos() {
-		return $this->hasMany(Prdcto::class, 'id_linea');
+	public function getNomLineaAttribute ( $value ) {
+			return trim( $value);
 	}
-
- 
-
 }
