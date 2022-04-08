@@ -28,8 +28,14 @@ class MstroPrsntcione extends Model
 		'inactivo'
 	];
 
-	public function prdctos_prsntciones()
-	{
+
+	public function getNomPrsntcionAttribute( $value ){
+		return trim ( $value );
+	}
+	public function getDscrpcionAttribute( $value ){
+		return trim ( $value );
+	}
+	public function prdctos_prsntciones(){
 		return $this->hasMany(PrdctosPrsntcione::class, 'id_prsntcion');
 	}
 }

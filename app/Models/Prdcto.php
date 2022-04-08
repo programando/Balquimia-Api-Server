@@ -46,6 +46,17 @@ class Prdcto extends Model
 			];
 		}
 
+		public function getNomPrdctoAttribute ( $value ){
+				return trim( $value) ;
+		}
+		public function getNomFctrcionAttribute ( $value ){
+				return trim( $value) ;
+		}
+		public function getClaveAttribute ( $value ){
+			return trim( $value) ;
+		}
+	
+
 		public function daneClaseProducto()	{
 			return $this->belongsTo(MstroDneClsePrdcto::class, 'id_clse_dne_prdcto');
 		}
@@ -70,7 +81,7 @@ class Prdcto extends Model
 			return $this->belongsTo(MstroPuc::class, 'id_cnta_vta');
 		}
 
-		public function presentaciones()	{
+		public function prdctosPrsntciones()	{
 			return $this->hasMany(PrdctosPrsntcione::class, 'id_prdcto_ppal');
 		}
 		

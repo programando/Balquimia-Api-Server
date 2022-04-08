@@ -60,9 +60,13 @@ class PrdctosPrsntcione extends Model
 	public function prdcto()
 	{
 		return $this->belongsTo(Prdcto::class, 'id_prdcto_ppal');
+	} 
+
+	public function getFrgnciaAttribute ( $value ){
+		return trim( $value) ;
 	}
 
-	public function mstro_prsntcione()
+	public function Presentaciones()
 	{
 		return $this->belongsTo(MstroPrsntcione::class, 'id_prsntcion');
 	}
