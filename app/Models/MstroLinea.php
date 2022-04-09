@@ -7,7 +7,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Helpers\FoldersHelper as Folders;
  
 class MstroLinea extends Model
 {
@@ -33,5 +33,8 @@ class MstroLinea extends Model
 
 	public function getNomLineaAttribute ( $value ) {
 			return trim( $value);
+	}
+	public function getImagenAttribute( $value) {  
+		return  Folders::LineasImages() .'/'. $value ;
 	}
 }

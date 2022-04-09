@@ -10,19 +10,20 @@ use Illuminate\Support\Facades\Cache;
 use App\Http\Resources\PrdctosResource;
 use App\Http\Resources\ShowRecordSimple;
 use App\Http\Resources\ShowRecordCollection;
+ 
 
 class PrdctoController extends Controller
 {
     
     public function getProductosPorClase ( Request $FormData ) {
-            //return Prdctos::getProductosPorClase ( $FormData->id_clse_prdcto) ;
-            return Prdctos::with('prdctosPrsntciones')->whereIdClsePrdcto($FormData->id_clse_prdcto )->get();
+            return Prdctos::with('prdctosPrsntciones.Presentaciones')->whereIdClsePrdcto($FormData->id_clse_prdcto )->get();
     }
     
     public function getProductosPorLinea ( Request $FormData ) {
-            //return Prdctos::getProductosPorLinea ( $FormData->id_linea) ;
-            return Prdctos::with('prdctosPrsntciones.Presentaciones')
+             
+            return  Prdctos::with('prdctosPrsntciones.Presentaciones')
                     ->whereIdLinea($FormData->id_linea )->get();
+                     
     }
 
     public function listaPrecios() {

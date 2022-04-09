@@ -35,7 +35,7 @@ class MstroPrsntcione extends Model
 	public function getDscrpcionAttribute( $value ){
 		return trim ( $value );
 	}
-	public function prdctos_prsntciones(){
+	public function PrdctosPrsntcione(){
 		return $this->hasMany(PrdctosPrsntcione::class, 'id_prsntcion');
 	}
 }

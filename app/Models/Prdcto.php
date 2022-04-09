@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\FoldersHelper as Folders;
 
 use DB ;
  
@@ -22,9 +23,9 @@ class Prdcto extends Model
 		'inactivo'           => 'bool'
 	];
 
-	protected $fillable = [	'clave',			'id_cnta_vta',			'id_cnta_inv',			'id_cnta_costo',			'id_tpo_prdcto',			'id_clse_dne_prdcto',
+	protected $fillable = [	'clave','id_cnta_vta','id_cnta_inv','id_cnta_costo','id_tpo_prdcto','id_clse_dne_prdcto','imagen',
 													'id_und_mda',	'id_clse_prdcto',		'id_linea',					'nom_prdcto',					'nom_fctrcion',				'tpo_dspcho',
-													'dnsdad',			'mp_fbrcda',				'mp_ctrlda',				'prstmo',								'inactivo'
+													'dnsdad',			'mp_fbrcda',				'mp_ctrlda',				'prstmo',								'inactivo', 'dscrpcion'
 	];
 
 
@@ -55,7 +56,13 @@ class Prdcto extends Model
 		public function getClaveAttribute ( $value ){
 			return trim( $value) ;
 		}
-	
+		public function getDscrpcionAttribute ( $value ){
+			return trim( $value) ;
+		}
+		
+		public function getImagenAttribute( $value) {  
+			return  Folders::ProductsImages() .'/'. $value ;
+		}
 
 		public function daneClaseProducto()	{
 			return $this->belongsTo(MstroDneClsePrdcto::class, 'id_clse_dne_prdcto');
