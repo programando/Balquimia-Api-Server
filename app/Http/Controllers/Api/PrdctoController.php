@@ -16,7 +16,10 @@ class PrdctoController extends Controller
 {
     
     public function getProductosPorClase ( Request $FormData ) {
-            return Prdctos::with('prdctosPrsntciones.Presentaciones')->whereIdClsePrdcto($FormData->id_clse_prdcto )->get();
+        return Prdctos::with('prdctosPrsntciones.Presentaciones')->whereIdClsePrdcto($FormData->id_clse_prdcto )->get();
+
+        //$users = User::whereRelation('posts', 'status', 'draft')->get();
+
     }
     
     public function getProductosPorLinea ( Request $FormData ) {
