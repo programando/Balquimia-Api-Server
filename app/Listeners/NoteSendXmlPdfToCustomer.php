@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Mail\CreditNoteSentToCustomerMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use config;
 
 class NoteSendXmlPdfToCustomer
 {
