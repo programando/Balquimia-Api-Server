@@ -37,4 +37,8 @@ class MstroLinea extends Model
 	public function getImagenAttribute( $value) {  
 		return  Folders::LineasImages() .'/'. $value ;
 	}
+	public function prdctos()
+	{
+		return $this->hasMany(Prdcto::class, 'id_linea');
+	}
 }

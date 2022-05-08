@@ -50,7 +50,9 @@ class NominaElctrncaController extends Controller
                   $this->documentsProcessReponse( $Empleado['id_nomina_elctrnca'], $response ) ;
               }
              // Informa a empresa repote de nómina 
-             TercerosNominaWasReportedEvent::dispatch ( $this->employeeObject);
+             if ( $Empleados ) {
+                TercerosNominaWasReportedEvent::dispatch ( $this->employeeObject);
+             }
        }
 
        public function notaAjusteNomina () {

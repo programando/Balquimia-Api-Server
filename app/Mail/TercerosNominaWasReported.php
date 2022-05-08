@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use config;
 class TercerosNominaWasReported extends Mailable
 {
     use Queueable, SerializesModels;
@@ -28,7 +28,7 @@ class TercerosNominaWasReported extends Mailable
     public function build()
     {
         return $this->view('mails.terceros.nomina')
-        ->from( 'sistemas@balquimia.com', 'nómina' )
+        ->from( config('balquimia.EMAIL_DOCS_ELECTRONICOS') , 'nómina' )
         ->subject('Reporte nómina') ;
     }
 }

@@ -11,6 +11,16 @@ use App\Models\MstroLinea as Lineas;
 class MstroLineasController extends Controller
 {
     public function activas () {
-        return     Lineas::where('inactivo','0')->orderBy('orden_web')->get();
+
+        $Lineas =    Lineas::withCount(['prdctos'])->where('inactivo','0')->orderBy('orden_web')->get();
+        return  $Lineas->where('prdctos_count','>',0);
+       
+        
+        /*$LIneas =    Lineas::withCount(['prdctos',
+                    'prdctos as CantProductos' => function( $query ) {
+                        $query->where('clave','BB1');
+                    }])->where('inactivo','0')->orderBy('orden_web')->get();
+                    */
+
     }
 }
