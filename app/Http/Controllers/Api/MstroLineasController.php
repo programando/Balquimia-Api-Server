@@ -12,7 +12,10 @@ class MstroLineasController extends Controller
 {
     public function activas () {
 
-        $Lineas =    Lineas::withCount(['prdctos'])->where('inactivo','0')->orderBy('orden_web')->get();
+        $Lineas =    Lineas::withCount(['prdctos'])
+            ->where('inactivo','0')
+            ->where('imagen','!=', '')
+            ->orderBy('orden_web')->get();
         return  $Lineas->where('prdctos_count','>',0);
        
         
