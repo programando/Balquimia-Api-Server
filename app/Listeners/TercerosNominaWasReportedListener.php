@@ -13,8 +13,8 @@ class TercerosNominaWasReportedListener
   
     public function handle(TercerosNominaWasReportedEvent $event)
     {
-         Mail::to( config('balquimia.CONTABILIDAD'))
-          ->cc( config('balquimia.EMAIL_SISTEMAS') )
+         Mail::to( config('company.CONTABILIDAD'))
+          ->cc( config('company.EMAIL_SISTEMAS') )
           ->queue(   new TercerosNominaWasReported ($event->Empleados ));
     }
 }

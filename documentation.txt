@@ -3,7 +3,7 @@ php artisan serve --host=localhost --port=8000
 php artisan queue:work
 
 
- Crear Modelos
+ Crear Modelos ( https://github.com/reliese/laravel )
  --------------
     php artisan code:models --table=terceros
 

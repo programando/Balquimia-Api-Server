@@ -28,7 +28,7 @@ class TercerosNominaWasReported extends Mailable
     public function build()
     {
         return $this->view('mails.terceros.nomina')
-        ->from( config('balquimia.EMAIL_DOCS_ELECTRONICOS') , 'nómina' )
+        ->from( config('company.EMAIL_DOCS_ELECTRONICOS') , 'nómina' )
         ->subject('Reporte nómina') ;
     }
 }

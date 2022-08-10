@@ -103,7 +103,17 @@ class FctrasElctrnca extends Model
 		public function serviceResponse() {
 			return $this->hasOne(FctrasElctrncasDataResponse::class, 'id_fact_elctrnca');
 		}
-	
+
+		public function docsSoporteRetenciones() {
+			return $this->hasMany(DcmntosSprteWithholdingTaxTotal::class, 'id_fact_elctrnca');
+		}
+ 
+		public function docsSoporteResponse() {
+			return $this->hasMany(FctrasElctrncasSoportDocumentResponse::class, 'id_fact_elctrnca');
+		}
+
+
+
 /* 			public function charges() {
 			return $this->hasOne(FctrasElctrncasAllowanceCharges::class, 'id_fact_elctrnca');
 		} */
@@ -119,6 +129,14 @@ class FctrasElctrnca extends Model
 			}
 			public function scopeCreditNotesToSend ( $query ){
 				return $query->Where('rspnse_dian','0')->whereIn('type_document_id', array('5','6'));	// Notas Crédito/Débito
+			}
+		
+			public function scopeInvoicesSearchDataByUUID ($query, $uuid ){
+				return $query->Where('uuid', "=","$uuid")->get(); // Facturas
+			}
+
+			public function scopeDocumentosSoporteToSend ( $query ){
+				return $query->Where('rspnse_dian','0')->where('type_document_id',  array('12','13'))->get(); // Documentos soporte
 			}
 			
 		// ACCESORS

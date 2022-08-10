@@ -68,7 +68,7 @@
  
             <div class="content">
                 <div class="title m-b-md">
-                    Balquimia S.A.S. <br>
+                    F.Q.E. S.A.S. <br>
 
                 </div>
 

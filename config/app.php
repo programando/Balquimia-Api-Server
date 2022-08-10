@@ -214,8 +214,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\ApiServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
     ],

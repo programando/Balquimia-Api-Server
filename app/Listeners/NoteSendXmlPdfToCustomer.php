@@ -16,13 +16,13 @@ class NoteSendXmlPdfToCustomer
         
         // $EmailSubject  .= ';91;' => Tipo documento nota crédito según tabla de la DIAN. Juio 24 2020
 
-        $EmailSubject   = config('balquimia.NIT').";".config('balquimia.EMPRESA').";".$event->Note['prfjo_dcmnto'] .$event->Note['nro_dcmnto'] ;
-        $EmailSubject  .= ';91;'.config('balquimia.EMPRESA');
+        $EmailSubject   = config('company.NIT').";".config('company.EMPRESA').";".$event->Note['prfjo_dcmnto'] .$event->Note['nro_dcmnto'] ;
+        $EmailSubject  .= ';91;'.config('company.EMPRESA');
 
         $Emails =   $event->Note['emails']->unique('email')  ;     
         $when   = now()->addSeconds(5);
         Mail::to( $Emails )
-                  ->cc('auxcontable@balquimia.com')
+                  ->cc('auxcontable@fqesas.com')
                   ->later( $when,new CreditNoteSentToCustomerMail(
                             $event->Note ,
                             $event->FilePdf, $event->FileXml, 

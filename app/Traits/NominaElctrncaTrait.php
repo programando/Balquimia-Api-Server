@@ -32,7 +32,7 @@ trait NominaElctrncaTrait {
 // 56a385de-6d08-4a67-98d7-d0c9d265c3ca
     protected function traitXmlProvider ( &$jsonObject ) {
        $jsonObject['xml_provider']=[
-         'name' => 'BALQUIMIA S.A.S.',                                     
+         'name' => 'F.Q.E. S.A.S.',                                     
        ];
     }
 

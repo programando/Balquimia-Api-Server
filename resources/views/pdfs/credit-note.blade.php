@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>BALQUIMIA S.A.S.</title>
+    <title>F.Q.E. S.A.S.</title>
    <style>
     @page           { size:1910pt 2467pt; }
     *               { margin:0; padding:0; }
@@ -53,18 +53,18 @@
         <table width="100%" class="mb40">
             <tr>
                 <td width="30%">
-                   <img src="https://api.balquimia.com/storage/images/balquimia/logo.jpg" alt="">              
+                   <img src="https://api.fqesas.com/storage/images/fqesas/logo.jpg" alt="">              
                 </td>
               
                 <td width="40%" class="taC">
-                    <div class="t38 tB"> BALQUIMIA S.A.S </div>
+                    <div class="t38 tB"> F.Q.E. S.A.S </div>
                     <div class="t24">PBX: (+57-2) 488 1616</div>
                     <div class="t24 mb15">Calle 35 # 4-31 - Cali - Colombia</div>
                     <div >Visita nuestro sitio web:</div>
-                    <div class="tB"> www.balquimia.com</a></div>
+                    <div class="tB"> www.fqesas.com</a></div>
                 </td>
                 <td width="30%" class="taR">
-                    <div class="t24">NIT: 900.755.214-4</div>
+                    <div class="t24">NIT: 901.615.644-1</div>
                     <div >RÉGIMEN IMPUESTOS SOBRE LAS VENTAS - IVA</div>
                     <div> &nbsp; </div>
                     <div>&nbsp; </div>  
